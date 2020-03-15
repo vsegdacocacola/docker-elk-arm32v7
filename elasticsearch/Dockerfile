@@ -2,6 +2,7 @@ FROM arm32v7/ubuntu
 
 RUN set +x \
   && apt-get update \
+  && apt-get install -y --no-install-recommends apt-utils \
   && apt-get upgrade -y \
   && apt-get install curl wget -y \
   && apt-get install openjdk-11-jdk -y \
@@ -33,7 +34,13 @@ COPY ./elasticsearch.yml /etc/elasticsearch/
 
 COPY ./jvm.options /etc/elasticsearch/
 
-RUN set +x \
+COPY .elasticsearch /etc/defaults/elasticsearch
+
+EXPOSE 9200
+
+VOLUME /var/lib/elasticsearch
+
+CMD set +x \
   && echo "Starting elasticsearch service" \
   && service elasticsearch start \
   && set -x
