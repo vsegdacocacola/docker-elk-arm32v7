@@ -39,5 +39,5 @@ EXPOSE 9200
 
 VOLUME /var/lib/elasticsearch
 
-CMD echo "Starting elasticsearch service" \
-  && service elasticsearch start
+#CMD echo "Starting elasticsearch service" \
+#  && service elasticsearch start
