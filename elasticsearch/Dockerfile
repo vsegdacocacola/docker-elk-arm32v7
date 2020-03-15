@@ -33,11 +33,12 @@ COPY ./elasticsearch.yml /etc/elasticsearch/
 
 COPY ./jvm.options /etc/elasticsearch/
 
-COPY ./elasticsearch /etc/defaults/elasticsearch
+COPY ./elasticsearch /etc/defaults/
 
 EXPOSE 9200
 
 VOLUME /var/lib/elasticsearch
 
-#CMD echo "Starting elasticsearch service" \
-#  && service elasticsearch start
+CMD [ "service elasticsearch start" ]
+
+CMD ["/bin/bash"]
