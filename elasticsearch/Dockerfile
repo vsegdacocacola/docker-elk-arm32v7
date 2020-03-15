@@ -33,7 +33,7 @@ COPY ./elasticsearch.yml /etc/elasticsearch/
 
 COPY ./jvm.options /etc/elasticsearch/
 
-COPY ./elasticsearch /etc/defaults/
+COPY ./elasticsearch /etc/default/
 
 EXPOSE 9200
 
