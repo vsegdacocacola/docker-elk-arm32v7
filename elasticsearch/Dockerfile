@@ -37,6 +37,8 @@ COPY ./elasticsearch /etc/default/
 
 COPY ./60-elasticsearch.conf /etc/sysctl.d/
 
+RUN sysctl -w vm.max_map_count=262144
+
 EXPOSE 9200
 
 VOLUME /var/lib/elasticsearch
