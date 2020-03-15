@@ -17,9 +17,9 @@ RUN set +x \
   && echo "Create ${KIBANA_HOME}" \
   && mkdir -p ${KIBANA_HOME} \
   && echo "Download from  https://artifacts.elastic.co/downloads/kibana/${KIBANA_PACKAGE} to ${KIBANA_HOME}" \
-  && wget -q -O "${KIBANA_HOME}\${KIBANA_PACKAGE}" https://artifacts.elastic.co/downloads/kibana/${KIBANA_PACKAGE} \
+  && wget -q -O "${KIBANA_HOME}/${KIBANA_PACKAGE}" https://artifacts.elastic.co/downloads/kibana/${KIBANA_PACKAGE} \
   && echo "Install ${KIBANA_PACKAGE} to ${KIBANA_HOME}" \
-  && dpkg -i --force-all --ignore-depends=lib6c ${KIBANA_HOME}\${KIBANA_PACKAGE} \
+  && dpkg -i --force-all --ignore-depends=lib6c ${KIBANA_HOME}/${KIBANA_PACKAGE} \
   && set -x
 
 ADD ./kibana.yml ${KIBANA_HOME}/config/kibana.yml
