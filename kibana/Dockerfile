@@ -19,7 +19,7 @@ RUN set +x \
   && echo "Download from  https://artifacts.elastic.co/downloads/kibana/${KIBANA_PACKAGE} to ${KIBANA_HOME}" \
   && wget -q -O "${KIBANA_HOME}\${KIBANA_PACKAGE}" https://artifacts.elastic.co/downloads/kibana/${KIBANA_PACKAGE} \
   && echo "Install ${KIBANA_PACKAGE} to ${KIBANA_HOME}" \
-  && dpkg -i --force-all --ignore-depends=lib6c ${KIBANA_PACKAGE}\${KIBANA_HOME} \
+  && dpkg -i --force-all --ignore-depends=lib6c ${KIBANA_HOME}\${KIBANA_PACKAGE} \
   && set -x
 
 ADD ./kibana.yml ${KIBANA_HOME}/config/kibana.yml
