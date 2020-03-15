@@ -3,7 +3,7 @@ FROM arm32v7/ubuntu
 RUN set +x \
   && apt-get -qq -y update \
   && apt-get -qq -y upgrade \
-  && apt-get -qq -y install curl wget \
+  && apt-get -qq -y install curl wget vi \
   && apt-get -qq -y install openjdk-11-jdk \
   && apt clean \
   && set -x 
