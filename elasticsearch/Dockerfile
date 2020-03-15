@@ -25,6 +25,9 @@ RUN set +x \
   && dpkg -i --force-all --ignore-depends=lib6c ${ES_HOME}\${ES_PACKAGE} \
   && set -x
 
+RUN set +x \
+  && echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+
 #TODO: Fix dpkg status /var/lib/dpkg/status
 #Status: install ok installed
 #Depends: bash (>= 4.1), lsb-base (>= 4), adduser, coreutils (>= 8.4)
