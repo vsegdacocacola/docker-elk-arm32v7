@@ -35,6 +35,8 @@ COPY ./jvm.options /etc/elasticsearch/
 
 COPY ./elasticsearch /etc/default/
 
+COPY ./60-elasticsearch.conf /etc/sysctl.d/
+
 EXPOSE 9200
 
 VOLUME /var/lib/elasticsearch
