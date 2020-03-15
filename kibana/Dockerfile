@@ -3,7 +3,7 @@ FROM arm32v7/ubuntu
 RUN set +x \
   && apt-get -qq -y update \
   && apt-get -qq -y upgrade \
-  && apt-get -qq -y install curl wget xz-utils vi \
+  && apt-get -qq -y install curl wget xz-utils nano \
   && apt clean \
   && set -x 
 
