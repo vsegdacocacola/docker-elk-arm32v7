@@ -41,4 +41,4 @@ VOLUME /var/lib/elasticsearch
 
 CMD [ "service elasticsearch start" ]
 
-CMD ["tail -f /var/log/elasticsearch/elasticsearch.log & wait"]
+CMD [ "tail -f /var/log/elasticsearch/elasticsearch.log & wait" ]
