@@ -20,7 +20,7 @@ RUN set +x \
   && echo "Create ${ES_HOME}" \
   && mkdir -p ${ES_HOME} \
   && echo "Download from  https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} to ${ES_HOME}" \
-  && wget  –quiet  -O "${ES_HOME}\${ES_PACKAGE}" https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} \
+  && wget -q -O "${ES_HOME}\${ES_PACKAGE}" https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} \
   && echo "Install ${ES_PACKAGE} to ${ES_HOME}" \
   && dpkg -i --force-all --ignore-depends=lib6c ${ES_HOME}\${ES_PACKAGE} \
   && set -x
@@ -39,9 +39,5 @@ EXPOSE 9200
 
 VOLUME /var/lib/elasticsearch
 
-CMD set +x \
-  && echo "Starting elasticsearch service" \
-  && service elasticsearch start \
-  && set -x
-
-
+CMD echo "Starting elasticsearch service" \
+  && service elasticsearch start
