@@ -1,11 +1,10 @@
 FROM arm32v7/ubuntu
 
 RUN set +x \
-  && apt-get update \
-  && apt-get install -y --no-install-recommends apt-utils \
-  && apt-get upgrade -y \
-  && apt-get install curl wget -y \
-  && apt-get install openjdk-11-jdk -y \
+  && apt-get -qq -y update \
+  && apt-get -qq -y upgrade \
+  && apt-get -qq -y install curl wget \
+  && apt-get -qq -y install openjdk-11-jdk \
   && apt clean \
   && set -x 
 
@@ -21,7 +20,7 @@ RUN set +x \
   && echo "Create ${ES_HOME}" \
   && mkdir -p ${ES_HOME} \
   && echo "Download from  https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} to ${ES_HOME}" \
-  && wget -O "${ES_HOME}\${ES_PACKAGE}" https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} \
+  && wget  –quiet  -O "${ES_HOME}\${ES_PACKAGE}" https://artifacts.elastic.co/downloads/elasticsearch/${ES_PACKAGE} \
   && echo "Install ${ES_PACKAGE} to ${ES_HOME}" \
   && dpkg -i --force-all --ignore-depends=lib6c ${ES_HOME}\${ES_PACKAGE} \
   && set -x
@@ -34,7 +33,7 @@ COPY ./elasticsearch.yml /etc/elasticsearch/
 
 COPY ./jvm.options /etc/elasticsearch/
 
-COPY .elasticsearch /etc/defaults/elasticsearch
+COPY ./elasticsearch /etc/defaults/elasticsearch
 
 EXPOSE 9200
 
