@@ -1,11 +1,11 @@
-FROM arm32v7/ubuntu
 
 RUN set +x \
   && apt-get -qq -y update \
   && apt-get -qq -y upgrade \
-  && apt-get -qq -y install curl wget nano \
-  && apt-get -qq -y install openjdk-11-jdk \
+  && apt-get -qq -y --no-install-recommends install curl wget nano \
+  && apt-get -qq --no-install-recommends -y install openjdk-11-jdk \
   && apt clean \
+  && rm -rf /var/lib/apt/lists/* \
   && set -x 
 
 ENV ELK_VERSION=7.6.1
@@ -29,14 +29,16 @@ RUN set +x \
 #Status: install ok installed
 #Depends: bash (>= 4.1), lsb-base (>= 4), adduser, coreutils (>= 8.4)
 
-COPY ./elasticsearch.yml /etc/elasticsearch/
+ADD ./elasticsearch.yml /etc/elasticsearch/
 
-COPY ./jvm.options /etc/elasticsearch/
+ADD ./jvm.options /etc/elasticsearch/
 
-COPY ./elasticsearch /etc/default/
+ADD ./elasticsearch /etc/default/
+
+ADD ./start.sh /usr/local/bin/start.sh
 
 EXPOSE 9200
 
 VOLUME /var/lib/elasticsearch
 
-CMD [ "service elasticsearch start && sleep 10 && tail -f /var/log/elasticsearch/elasticsearch.log" ]
+CMD [ "/usr/local/bin/start.sh" ]
