@@ -1,3 +1,4 @@
+FROM arm32v7/ubuntu
 
 RUN set +x \
   && apt-get -qq -y update \
