@@ -38,6 +38,7 @@ ADD ./jvm.options /etc/elasticsearch/
 ADD ./elasticsearch /etc/default/
 
 ADD ./start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
 EXPOSE 9200
 
