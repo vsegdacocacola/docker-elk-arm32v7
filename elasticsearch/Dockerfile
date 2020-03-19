@@ -39,4 +39,4 @@ EXPOSE 9200
 
 VOLUME /var/lib/elasticsearch
 
-CMD [ "service elasticsearch start && tail -f /var/log/elasticsearch/elasticsearch.log" ]
+CMD  "service elasticsearch start && tail -f /var/log/elasticsearch/elasticsearch.log" 
