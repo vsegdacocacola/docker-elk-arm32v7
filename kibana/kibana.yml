@@ -113,3 +113,7 @@ elasticsearch.hosts: ["http://pi:9200"]
 # Specifies locale to be used for all localizable strings, dates and number formats.
 # Supported languages are the following: English - en , by default , Chinese - zh-CN .
 #i18n.locale: "en"
+
+
+xpack.reporting.enabled: false
+xpack.security.enabled: false
