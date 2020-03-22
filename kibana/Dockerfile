@@ -29,3 +29,10 @@ ADD ./kibana.sh ${KIBANA_HOME}/bin/kibana
 RUN chmod a+x ${KIBANA_HOME}/bin/kibana
 
 EXPOSE 5601
+
+ADD ./start.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/start.sh
+
+VOLUME /usr/share/kibana
+
+CMD ["/usr/local/bin/start.sh"]
