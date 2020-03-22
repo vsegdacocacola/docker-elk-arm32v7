@@ -22,9 +22,9 @@ RUN set +x \
   && dpkg -i --force-all --ignore-depends=lib6c ${KIBANA_HOME}/${KIBANA_PACKAGE} \
   && set -x
 
-ADD ./kibana.yml ${KIBANA_HOME}/config/kibana.yml
+ADD ./kibana.yml /etc/kibana/kibana.yml
 
-RUN cd /root && curl -O https://nodejs.org/dist/v10.15.2/node-v10.15.2-linux-armv6l.tar.gz && tar -xvf node-v10.15.2-linux-armv6l.tar.gz
+RUN cd /root && curl -O https://nodejs.org/dist/v10.19.0/node-v10.19.0-linux-armv7l.tar.xz && tar -xJvf node-v10.19.0-linux-armv7l.tar.xz
 ADD ./kibana.sh ${KIBANA_HOME}/bin/kibana
 RUN chmod a+x ${KIBANA_HOME}/bin/kibana
 
