@@ -24,7 +24,7 @@ RUN set +x \
 
 ADD ./kibana.yml ${KIBANA_HOME}/config/kibana.yml
 
-RUN cd /root && curl -O https://nodejs.org/dist/v10.15.2/node-v10.15.2-linux-armv7l.tar.xz && tar -xJvf node-v10.15.2.0-linux-armv7l.tar.xz
+RUN cd /root && curl -O https://nodejs.org/dist/v10.15.2/node-v10.15.2-linux-armv6l.tar.gz && tar -xvf node-v10.15.2-linux-armv6l.tar.gz
 ADD ./kibana.sh ${KIBANA_HOME}/bin/kibana
 RUN chmod a+x ${KIBANA_HOME}/bin/kibana
 
