@@ -1,26 +1,8 @@
-_term() {
-  echo "Terminating Elasticsearch"
-  service elasticsearch stop
-  exit 0
-}
-
-trap _term SIGTERM SIGINT
+#!/bin/bash
 
 service elasticsearch start
-
-  # wait for Elasticsearch to start up before either starting Kibana (if enabled)
-  # or attempting to stream its log file
-  # - https://github.com/elasticsearch/kibana/issues/3077
-
-  # set number of retries (default: 30, override using ES_CONNECT_RETRY env var)
-  re_is_numeric='^[0-9]+$'
-  if ! [[ $ES_CONNECT_RETRY =~ $re_is_numeric ]] ; then
-     ES_CONNECT_RETRY=300
-  fi
-
-  if [ -z "$ELASTICSEARCH_URL" ]; then
-    ELASTICSEARCH_URL=${ES_PROTOCOL:-http}://localhost:9200
-  fi
+ES_CONNECT_RETRY=300
+ELASTICSEARCH_URL=http://localhost:9200
 
   counter=0
   while [ ! "$(curl -k ${ELASTICSEARCH_URL} 2> /dev/null)" -a $counter -lt $ES_CONNECT_RETRY  ]; do

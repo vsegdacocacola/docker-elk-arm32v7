@@ -3,7 +3,7 @@ FROM arm32v7/ubuntu
 RUN set +x \
   && apt-get -qq -y update \
   && apt-get -qq -y upgrade \
-  && apt-get -qq -y --no-install-recommends install curl wget nano gosu tzdata cron  \
+  && apt-get -qq -y --no-install-recommends install curl wget nano tzdata cron  \
   && apt-get -qq --no-install-recommends -y install openjdk-11-jdk \
   && apt clean \
   && rm -rf /var/lib/apt/lists/* \
