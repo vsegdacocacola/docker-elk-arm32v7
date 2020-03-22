@@ -32,7 +32,7 @@ if [ -z "$CLUSTER_NAME" ]; then
   cat /var/log/elasticsearch/elasticsearch.log
   exit 1
 elif [[ "$CLUSTER_NAME" =~ "master_not_discovered_exception" ]]; then
-  # If we got a JSON error back, don't treat it like the literal name of the cluster.
+  # If we go t a JSON error back, don't treat it like the literal name of the cluster.
   # Example of what this error looks like:
   # [{"error":{"root_cause":[{"type":"master_not_discovered_exception","reason":null}]
   # We don't know the cluster name, so we'll just glob it.

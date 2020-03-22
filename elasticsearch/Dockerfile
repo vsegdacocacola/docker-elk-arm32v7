@@ -7,7 +7,6 @@ RUN set +x \
   && apt-get -qq --no-install-recommends -y install openjdk-11-jdk \
   && apt clean \
   && rm -rf /var/lib/apt/lists/* \
-  && gosu nobody true \
   && set -x 
 
 ENV ELK_VERSION=7.6.1
@@ -37,7 +36,7 @@ ADD ./jvm.options /etc/elasticsearch/
 
 ADD ./elasticsearch /etc/default/
 
-ADD ./start.sh /usr/local/bin/start.sh
+ADD ./start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.sh
 
 EXPOSE 9200
