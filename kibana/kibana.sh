@@ -14,7 +14,7 @@ while [ -h "$SCRIPT" ] ; do
 done
 
 DIR="$(dirname "${SCRIPT}")/.."
-NODE="/root/node-v10.15.2-linux-armv7l/bin/node"
+NODE="/root/node-v10.19.0-linux-armv7l/bin/node"
 echo "${NODE}"
 test -x "$NODE"
 if [ ! -x "$NODE" ]; then
