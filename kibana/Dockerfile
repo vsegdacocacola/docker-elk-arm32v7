@@ -25,6 +25,8 @@ RUN set +x \
 ADD ./kibana.yml /etc/kibana/kibana.yml
 
 RUN cd /root && curl -O https://nodejs.org/dist/v10.19.0/node-v10.19.0-linux-armv7l.tar.xz && tar -xJvf node-v10.19.0-linux-armv7l.tar.xz
+RUN rm -rf /usr/share/kibana/node/*
+RUN cp /root/node-v10.19.0-linux-armv7l /usr/share/kibana/node
 ADD ./kibana.sh ${KIBANA_HOME}/bin/kibana
 RUN chmod a+x ${KIBANA_HOME}/bin/kibana
 
