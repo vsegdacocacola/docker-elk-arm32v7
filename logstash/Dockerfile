@@ -35,7 +35,11 @@ RUN chmod +x /root/fix.sh
 
 RUN /root/fix.sh
 
-EXPOSE 514/udp
-EXPOSE 514/tcp
+ADD ./start.sh /root/
 
-CMD [ "tail", "-f", "/dev/null" ]
+RUN chmod +x /root/start.sh
+
+EXPOSE 1514/udp
+EXPOSE 1514/tcp
+
+CMD [ "/root/start.sh" ]
