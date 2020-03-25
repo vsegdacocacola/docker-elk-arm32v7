@@ -27,4 +27,15 @@ RUN set +x \
   && dpkg -i --force-all ${LOGSTASH_HOME}/${LOGSTASH_PACKAGE} \
   && set -x
 
+ADD ./fix.sh /root/
+
+ADD ./conf.d/* /etc/logstash/conf.d/
+
+RUN chmod +x /root/fix.sh
+
+RUN /root/fix.sh
+
+EXPOSE 514/udp
+EXPOSE 514/tcp
+
 CMD [ "tail", "-f", "/dev/null" ]
