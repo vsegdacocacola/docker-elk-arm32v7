@@ -40,6 +40,6 @@ ADD ./start.sh /root/
 RUN chmod +x /root/start.sh
 
 EXPOSE 1514/udp
-EXPOSE 1514/tcp
+EXPOSE 2055/udp
 
 CMD [ "/root/start.sh" ]
