@@ -3,13 +3,13 @@ FROM arm32v7/ubuntu
 RUN set +x \
   && apt-get -qq -y update \
   && apt-get -qq -y upgrade \
-  && apt-get -qq -y --no-install-recommends install gcc git make wget \
+  && apt-get -qq -y --no-install-recommends install gcc git make wget ca-certificates apt-transport-https \
   && apt clean \
   && rm -rf /var/lib/apt/lists/* \
   && set -x 
 
 RUN set +x \
-  && cd /root \
+  && cd ${HOME} \
   && wget https://dl.google.com/go/go1.12.5.linux-arm64.tar.gz \
   && tar -xzf go1.12.5.linux-arm64.tar.gz \
   && mkdir go_projects \
