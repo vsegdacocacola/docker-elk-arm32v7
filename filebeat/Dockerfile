@@ -18,10 +18,10 @@ RUN set +x \
 
  RUN set +x \
    && git clone https://github.com/sevlyar/go-daemon.git \
-   && cd go-daemon \
-   && cp src/god.c ./ \
-   && make \
-   && make install \
+   #&& cd go-daemon \
+   #&& cp src/god.c ./ \
+   #&& make \
+   #&& make install \
    && set -x
 
 CMD "tail -f /dev/null"
