@@ -13,7 +13,7 @@ RUN set +x \
 RUN set +x \
   && wget -q https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${ELK_VERSION}-amd64.deb \
   && dpkg -i --force-all filebeat-${ELK_VERSION}-amd64.deb \
-  && cp -r /go/src/github.com/elastic/beats/filebeat/filebeat /usr/share/filebeat/bin/ \
+#  && cp -r /go/src/github.com/elastic/beats/filebeat/filebeat /usr/share/filebeat/bin/ \
   && set -x
 
  RUN set +x \
