@@ -1,13 +1,18 @@
 FROM golang:latest
 
 ENV \
-  ELK_VERSION=7.6.1
+  ELK_VERSION=7.6.1 \
+  GOARCH=arm
 
 RUN set +x \
+  && echo "Go get github.com/elastic/beats" \
   && go get github.com/elastic/beats; exit 0 \
   && cd /go/src/github.com/elastic/beats/filebeat/ \
+  && echo "git checkout v${ELK_VERSION}" \
   && git checkout "v${ELK_VERSION}" \
-  && GOARCH=arm go build \
+  && echo "git build" \
+  && go build \
+  && echo "build done" \
   && set -x
 
 RUN set +x \
