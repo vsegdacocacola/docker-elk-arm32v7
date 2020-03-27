@@ -18,7 +18,7 @@ RUN set +x \
 
 RUN set +x \
   && git get github.com/sevlyar/go-daemon \
-  && cd /go-daemon \
+  && cd ./go-daemon \
   && cp src/god.c ./ \
   && make \
   && make install \
