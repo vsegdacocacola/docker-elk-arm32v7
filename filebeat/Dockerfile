@@ -6,7 +6,7 @@ ENV \
 RUN set +x \
   && go get github.com/elastic/beats \
   && cd /go/src/github.com/elastic/beats/filebeat/ \
-  && git checkout "v${elastic_version}" \
+  && git checkout "v${ELK_VERSION}" \
   && GOARCH=arm go build \
   && set -x
 
