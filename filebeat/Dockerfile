@@ -4,10 +4,6 @@ ENV \
   ELK_VERSION=7.6.1
 
 RUN set +x \
-  && apt-get install build-essential \
-  && set -x
-
-RUN set +x \
   && go get github.com/elastic/beats \
   && cd /go/src/github.com/elastic/beats/filebeat/ \
   && git checkout "v${elastic_version}" \
