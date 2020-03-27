@@ -22,5 +22,6 @@ RUN set +x \
    && cp src/god.c ./ \
    && make \
    && make install \
+   && set -x
 
 CMD "tail -f /dev/null"
