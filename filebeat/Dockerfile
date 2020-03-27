@@ -24,4 +24,4 @@ RUN set +x \
    #&& make install \
    && set -x
 
-CMD "tail -f /dev/null"
+CMD "/bin/bash"
