@@ -17,7 +17,7 @@ RUN set +x \
   && set -x
 
  RUN set +x \
-   && git clone github.com/sevlyar/go-daemon \
+   && git clone https://github.com/sevlyar/go-daemon.git \
    && cd go-daemon \
    && cp src/god.c ./ \
    && make \
