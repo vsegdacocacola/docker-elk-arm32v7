@@ -11,14 +11,14 @@ RUN set +x \
   && set -x
 
 RUN set +x \
-  && wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${ELK_VERSION}-amd64.deb \
+  && wget -q https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${ELK_VERSION}-amd64.deb \
   && dpkg -i --force-all filebeat-${ELK_VERSION}-amd64.deb \
-  && cp -r ./filebeat /usr/share/filebeat/bin/ \
+  && cp -r /go/src/github.com/elastic/beats/filebeat/filebeat /usr/share/filebeat/bin/ \
   && set -x
 
  RUN set +x \
    && git get github.com/sevlyar/go-daemon \
-   && cd ./go-daemon \
+   && cd go-daemon \
    && cp src/god.c ./ \
    && make \
    && make install \
