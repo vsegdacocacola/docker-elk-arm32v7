@@ -21,7 +21,9 @@ cd ./kibana
 docker build -t kibana .
 docker run -d -p 5601:5601 kibana
 ```
+4. Build and launch filebeat container
+
+5. Build and launch logstash container
 
 TODO:
-1. Logstash container
-2. Docker composer
+1. Docker compose

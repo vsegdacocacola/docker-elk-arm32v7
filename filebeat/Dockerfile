@@ -7,8 +7,7 @@ ENV \
 RUN \
   go get github.com/elastic/beats; exit 0 \
   && cd /go/src/github.com/elastic/beats/filebeat/ \
-  && git checkout "v${ELK_VERSION}" \
-  && GOARCH=arm go build
+  && git checkout "v${ELK_VERSION}" 
 
 RUN \
   wget -q https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${ELK_VERSION}-amd64.deb \
@@ -23,6 +22,15 @@ RUN \
 
 RUN cd /go/src/github.com/elastic/beats/filebeat/ \
   && GOARCH=arm go build \
-  && cp -r /go/src/github.com/elastic/beats/filebeat/filebeat /usr/share/filebeat/bin/
+  && cp -r /go/src/github.com/elastic/beats/filebeat/filebeat /usr/share/filebeat/bin/ \
+  && cp /usr/bin/god /usr/share/filebeat/bin/filebeat-god 
 
-CMD "/bin/bash"
+ADD ./filebeat.yml /etc/filebeat/
+
+ADD ./start.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/start.sh
+
+EXPOSE 2000
+EXPOSE 2514/udp
+
+CMD "start.sh"

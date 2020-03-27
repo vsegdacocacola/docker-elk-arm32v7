@@ -1,0 +1,17 @@
+filebeat.config.inputs:
+    enabled: true
+    path: configs/*.yml
+    reload.enabled: true
+    reload.period: 10s
+filebeat.inputs:
+    - type: tcp
+      max_message_size: 10MiB
+      host: "localhost:2000"
+     - type: syslog
+      protocol.udp:
+        host: "localhost:2514"  
+output.elasticsearch:
+    hosts: ["http://pi:9200"]
+    index: "filebeat-%{[agent.version]}-%{+yyyy.MM.dd}"
+
+setup.dashboards.enabled: true
