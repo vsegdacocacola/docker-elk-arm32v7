@@ -16,6 +16,7 @@ filebeat.inputs:
             - /var/log/*.log
 output.elasticsearch:
     hosts: ["http://elasticsearch:9200"]
-    index: "filebeat-%{[agent.version]}-%{+yyyy.MM.dd}"
+
+setup.kibana.host: "http://kibana:5601"
 
 setup.dashboards.enabled: true
