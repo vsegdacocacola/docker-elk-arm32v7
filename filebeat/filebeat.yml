@@ -5,15 +5,15 @@ filebeat.config.inputs:
     reload.period: 10s
 filebeat.inputs:
     - type: tcp
-      max_message_size: 10MiB
-      host: "localhost:2000"
-     - type: syslog
-      protocol.udp:
+        max_message_size: 10MiB
+        host: "localhost:2000"
+    - type: syslog
+        protocol.udp:
         host: "localhost:2514" 
     - type: log
         enabled: true
         paths:
-          - /var/log/*.log
+            - /var/log/*.log
 output.elasticsearch:
     hosts: ["http://elasticsearch:9200"]
     index: "filebeat-%{[agent.version]}-%{+yyyy.MM.dd}"

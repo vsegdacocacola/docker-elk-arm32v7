@@ -13,6 +13,8 @@ while [ -h "$SCRIPT" ] ; do
   fi
 done
 
+NODE_OPTIONS=--max_old_space_size=1024
+
 DIR="$(dirname "${SCRIPT}")/.."
 NODE="${DIR}/node/bin/node"
 echo "${NODE}"
