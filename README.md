@@ -12,20 +12,20 @@ Based on https://github.com/herpiko/arm32v7-elk-docker
 ```
 cd ./elasticsearch
 docker build -t elasticsearch .
-docker run --add-host=elasticsearch:172.17.0.1 -d -p 9200:9200 --name elasticsearch 
+docker run --add-host=elasticsearch:172.17.0.1 -d -p 9200:9200 --name elasticsearch --restart=always -d elasticsearch
 ```
 
 3. Build and launch kibana container
 ```
 cd ./kibana
 docker build -t kibana .
-docker run --add-host=kibana:172.17.0.2 -d -p 5601:5601 --link=elasticsearch --name kibana kibana
+docker run --add-host=kibana:172.17.0.2 -d -p 5601:5601 --link=elasticsearch --name kibana --restart=always -d kibana
 ```
 4. Build and launch filebeat container
 ```
 cd ./filebeat
 docker build -t filebeat .
-docker run -d -p 2000:2000 -p 2514:2514/udp --add-host=filebeat:172.17.0.3 --link=elasticsearch --name filebeat filebeat
+docker run -d -p 2000:2000 -p 2514:2514/udp --add-host=filebeat:172.17.0.3 --link=elasticsearch --name filebeat -restart=always -d filebeat
 
 ```
 5. Build and launch logstash container

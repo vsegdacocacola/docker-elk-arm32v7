@@ -4,7 +4,7 @@ RUN set +x \
   && apt-get -qq -y update \
   && apt-get -qq -y upgrade \
   && apt-get -qq -y --no-install-recommends install curl wget nano cron zip unzip \
-  && apt-get -qq -y --no-install-recommends install openjdk-8-jdk \
+  && apt-get -qq -y --no-install-recommends install openjdk-11-jdk \
   && apt-get -qq -y --no-install-recommends install apt-transport-https jruby \
   && apt-get -qq -y --no-install-recommends install texinfo build-essential ant git \
   && apt clean \
